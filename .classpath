@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="spring-boot-data-jpa-entity/.mvn/wrapper"/>
+	<classpathentry kind="src" path="spring-boot-data-jpa-entity/src/main/java"/>
+	<classpathentry kind="src" path="spring-boot-data-jpa-entity/src/test/java"/>
+	<classpathentry kind="output" path="spring-boot-data-jpa-entity/target/classes"/>
+</classpath>
