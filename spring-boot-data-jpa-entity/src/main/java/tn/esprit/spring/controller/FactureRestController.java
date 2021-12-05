@@ -112,11 +112,18 @@ public class FactureRestController {
 		return factureService.setFactureActive(i);
 	}
 	
-	@GetMapping("/tri-invoices")
+	@GetMapping("/get-active")
 	@ApiOperation(value = "Récupérer la liste des factures trié par montant ascendant")
 	@ResponseBody
-	public List<Facture> triFacture() {
-		return factureService.triFacture();
+	public List<Facture> getActiveFac() {
+		return factureService.getActiveFacture();
+	}
+	
+	@GetMapping("/get-inactive")
+	@ApiOperation(value = "Récupérer la liste des factures trié par montant ascendant")
+	@ResponseBody
+	public List<Facture> getInactiveFac() {
+		return factureService.getInactiveFacture();
 	}
 
 

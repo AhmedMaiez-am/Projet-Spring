@@ -38,7 +38,13 @@ public interface FactureRepository extends CrudRepository<Facture, Long> {
 	List<Facture> searchFacture(@Param("float") float f);
 	
 	
-	@Query(value="SELECT * FROM Facture ORDER BY date_facture ASC",nativeQuery = true)
+	@Query(value="SELECT * FROM Facture ORDER BY montant_facture ASC",nativeQuery = true)
 	List<Facture> triFacture();
+	
+	@Query(value="SELECT * FROM Facture WHERE Facture.active = 1",nativeQuery = true)
+	List<Facture> getActiveFacture();
+	
+	@Query(value="SELECT * FROM Facture WHERE Facture.active = 0",nativeQuery = true)
+	List<Facture> getInactiveFacture();
 	
 }

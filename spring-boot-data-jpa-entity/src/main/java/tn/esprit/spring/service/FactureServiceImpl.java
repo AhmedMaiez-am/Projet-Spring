@@ -150,4 +150,16 @@ public class FactureServiceImpl implements FactureService {
 		return (List<Facture>) factureRepository.triFacture();
 	}
 
+	@Override
+	public List<Facture> getActiveFacture() {
+		// TODO Auto-generated method stub
+		return (List<Facture>) factureRepository.getActiveFacture();
+	}
+
+	@Override
+	public List<Facture> getInactiveFacture() {
+		// TODO Auto-generated method stub
+		return (List<Facture>) factureRepository.getInactiveFacture();
+	}
+
 }

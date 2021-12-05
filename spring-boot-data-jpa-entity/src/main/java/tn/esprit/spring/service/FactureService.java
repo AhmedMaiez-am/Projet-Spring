@@ -33,4 +33,11 @@ public interface FactureService {
 	
 	float getChiffreAffaireParCategorieClient(CategorieClient categorieClient,
 			Date startDate, Date endDate);
+	
+	
+	List<Facture> getActiveFacture();
+
+	List<Facture> getInactiveFacture();
+
+	
 }
