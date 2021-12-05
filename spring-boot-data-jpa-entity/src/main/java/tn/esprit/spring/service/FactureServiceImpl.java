@@ -107,4 +107,47 @@ public class FactureServiceImpl implements FactureService {
 		return factureRepository.getChiffreAffaireParCategorieClient(categorieClient, startDate, endDate);
 	}
 
+	@Override
+	public void deleteFacture(Long id) {
+		// TODO Auto-generated method stub
+		factureRepository.deleteById(id);
+		
+	}
+
+	@Override
+	public Facture setFactureInactive(int i) {
+		// TODO Auto-generated method stub
+		Facture f = new Facture();
+		 f = factureRepository.setFacInactive(i);			
+			
+		 f.setActive(false);				
+			
+		
+		return factureRepository.save(f);
+		
+	}
+
+	@Override
+	public Facture setFactureActive(int i) {
+		// TODO Auto-generated method stub
+		Facture f = new Facture();
+		f = factureRepository.setFacActive(i);
+		
+		f.setActive(true);
+		return factureRepository.save(f);
+	}
+
+	@Override
+	public List<Facture> searchFac(float f) {
+		// TODO Auto-generated method stub
+		List<Facture> fac = factureRepository.searchFacture(f);
+		return fac;
+	}
+
+	@Override
+	public List<Facture> triFacture() {
+		// TODO Auto-generated method stub
+		return (List<Facture>) factureRepository.triFacture();
+	}
+
 }

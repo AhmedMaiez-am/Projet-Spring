@@ -1,6 +1,7 @@
 package tn.esprit.spring.service;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,5 +26,6 @@ public class DetailFactureServiceImpl implements DetailFactureService {
 		// TODO Auto-generated method stub
 		return detailFactureRepository.getRevenuBrutProduit(idProduit, startDate, endDate);
 	}
+
 
 }

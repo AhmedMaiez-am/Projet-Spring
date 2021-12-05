@@ -18,5 +18,7 @@ public interface ClientService {
 
 	Client retrieveClient(Long id);
 	List <Client> getClientWithDate(Date d1 ,Date d2);
+	
+	List<Client> rechercheClient(String string);
 
 }

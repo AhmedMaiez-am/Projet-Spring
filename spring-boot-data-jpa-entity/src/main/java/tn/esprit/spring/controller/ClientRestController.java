@@ -69,5 +69,13 @@ public class ClientRestController {
 	public Client modifyClient(@RequestBody Client client) {
 		return clientService.updateClient(client);
 	}
+	
+	// http://localhost:8089/SpringMVC/client/recherche/{string}
+	@GetMapping("/recherche/{string}")
+	@ResponseBody
+	public List<Client> rechercheClient(@PathVariable("string") String rech){
+		List<Client> c = clientService.rechercheClient(rech);
+		return c;
+	}
 
 }

@@ -53,6 +53,15 @@ public class ClientServiceImpl implements ClientService {
 
 	//	return clientRepository.retrieveClientsByDateNaissance( new SimpleDateFormat("dd/MM/yyyy").parse("01/01/1995"),new SimpleDateFormat("dd/MM/yyyy").parse("31/12/1995"));
 	}
+
+	@Override
+	public List<Client> rechercheClient(String string) {
+		// TODO Auto-generated method stub
+		List<Client> rechList=clientRepository.rech(string);
+		return rechList;
+	}
+	
+	
 	
 	
 	

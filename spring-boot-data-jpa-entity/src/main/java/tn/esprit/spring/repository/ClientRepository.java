@@ -22,6 +22,9 @@ public interface ClientRepository extends CrudRepository<Client, Long> {
 	@Query("SELECT c FROM Client c WHERE c.dateNaissance BETWEEN :d1 and :d2")
 	List<Client> retrieveClientsByDateNaissance(@Param("d1") Date d1 , @Param("d2") Date d2);
 	
+	@Query("SELECT c FROM Client c WHERE c.nom like %:string% ")
+	public List<Client> rech(@Param("string") String string);
+	
 	
 //	@Query(value = "SELECT c FROM Client c WHERE c.dateNaissance BETWEEN '01/01/1995' and '31/12/1995'" ,
 //			nativeQuery = true)

@@ -26,5 +26,19 @@ public interface FactureRepository extends CrudRepository<Facture, Long> {
 	@Query(value="SELECT SUM(f.montantFacture) FROM Facture f WHERE (f.client.categorieClient = :cat) AND (f.dateFacture between :start_date and :end_date)")
 	float getChiffreAffaireParCategorieClient(@Param("cat") CategorieClient categorie ,@Param("start_date") Date startDate ,@Param("end_date") Date endDate);
 
+	@Query(value="SELECT * FROM Facture WHERE (Facture.active = 1) AND (Facture.id_facture = :int)",nativeQuery = true)
+	Facture setFacInactive(@Param("int") int i  );
+	
+	
+	@Query(value="SELECT * FROM Facture WHERE (Facture.active = 0) AND (Facture.id_facture = :int)",nativeQuery = true)
+	Facture setFacActive(@Param("int") int i  );
+	
+	
+	@Query(value="SELECT * FROM Facture WHERE FACTURE.montant_facture = :float", nativeQuery = true)
+	List<Facture> searchFacture(@Param("float") float f);
+	
+	
+	@Query(value="SELECT * FROM Facture ORDER BY date_facture ASC",nativeQuery = true)
+	List<Facture> triFacture();
 	
 }
