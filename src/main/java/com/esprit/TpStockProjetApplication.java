@@ -9,7 +9,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 @EnableScheduling
 @SpringBootApplication
-@EnableAspectJAutoProxy
 public class TpStockProjetApplication {
 
 	public static void main(String[] args) {
