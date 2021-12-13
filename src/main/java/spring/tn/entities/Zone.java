@@ -1,25 +1,23 @@
-package tn.esprit.spring.entity;
+package spring.tn.entities;
 
 
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 import lombok.experimental.FieldDefaults;
-
-
 
 @Entity
 @Getter
@@ -27,27 +25,26 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@ToString
-public class DetailFacture {
+public class Zone {
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Long idDetailFacture;
+	Long id;
 
-	int qte;
+	String ref;
 
-	float prixTotal;
-
-	int pourcentageRemise;
-
-	float montantRemise;
-
-	@JsonIgnore
+	float dimension;
+	
+	@OneToOne
+	private Personnel personnel;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="zoneDePersonnel")
+	private Set<Personnel> personnels;
+	
 	@ManyToOne
-	@JoinColumn(name = "factureId")
-	Facture facture;
-
-	@ManyToOne
-	@JoinColumn(name = "produitId")
-	Produit produit;
+	Parking parking;
+	
+	
 
 }

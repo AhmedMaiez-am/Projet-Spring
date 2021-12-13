@@ -1,16 +1,17 @@
-package tn.esprit.spring.entity;
+package spring.tn.entities;
 
-import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -18,7 +19,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
-
+import spring.tn.enume.Poste;
 
 
 @Entity
@@ -27,23 +28,31 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Rayon implements Serializable {
-
-	/**
-	 * 
-	 */
-	static final long serialVersionUID = 1L;
-
+public class Personnel {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Long idRayon;
+	Long id;
 
-	String code;
+	String nom;
 
-	String libelle;
-
-	@JsonIgnore 
-	@OneToMany(mappedBy = "rayon",cascade = CascadeType.ALL)
-	Set<Produit> produitList;
+	String prenom;
+	
+	int age;
+	
+	@Temporal(TemporalType.DATE)
+	Date dateDeRecrutement;
+	
+	String login;
+	
+	String password;
+	
+	Poste poste;
+	
+	@OneToOne(mappedBy="personnel")
+	private Zone zone;
+	
+	@ManyToOne
+	Zone zoneDePersonnel;
 
 }

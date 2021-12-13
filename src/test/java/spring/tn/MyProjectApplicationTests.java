@@ -1,16 +1,13 @@
-package tn.esprit.spring;
+package spring.tn;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringBootDataJpaEntityApplicationTests {
+class MyProjectApplicationTests {
 
-
-	
 	@Test
 	void contextLoads() {
-		
 	}
-	
+
 }

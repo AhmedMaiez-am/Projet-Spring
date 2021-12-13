@@ -1,4 +1,4 @@
-package tn.esprit.spring;
+package spring.tn;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,10 +9,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableScheduling
 @EnableSwagger2
 @SpringBootApplication
-public class SpringBootDataJpaEntityApplication {
+public class MyProjectApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootDataJpaEntityApplication.class, args);
+		SpringApplication.run(MyProjectApplication.class, args);
 	}
 
 }

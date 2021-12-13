@@ -1,6 +1,7 @@
-package tn.esprit.spring.entity;
+package spring.tn.entities;
 
-import java.io.Serializable;
+
+
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -8,9 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -26,27 +26,22 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Stock implements Serializable {
-	/**
-	 * 
-	 */
-	static final long serialVersionUID = 1L;
-
+public class Parking {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Long idStock;
+	Long id;
 
-	int qte;
+	String designation;
 
-	int qteMin;
-
-	String libelleStock;
+	String adresse;
 	
-	@JsonIgnore 
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "stock")
-	Set<Produit> produitList;
-
+	int capacite;
 	
-
 	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="parking")
+	private Set<Zone> zone;
+
+
+
 }
