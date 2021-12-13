@@ -77,5 +77,33 @@ public class ClientRestController {
 		List<Client> c = clientService.rechercheClient(rech);
 		return c;
 	}
+	@GetMapping("/getPremium")
+	@ResponseBody
+	public List<Client> getPremium() {
+		return clientService.getPremium();
+	}
+	@GetMapping("/get_non_premium")
+	@ResponseBody
+	public List<Client> listNonPremium() {
+		return clientService.getNonPremium();
+	}
+	
+	@GetMapping("/getCountPremium")
+	@ResponseBody
+	public float getCountPremium() {
+		return clientService.clientsPremium();
+	}
+	
+	@GetMapping("/getCountFidele")
+	@ResponseBody
+	public float getCountFidele() {
+		return clientService.clientsFidele();
+	}
+	
+	@GetMapping("/getCountOrdinaire")
+	@ResponseBody
+	public float getCountOrdinaire() {
+		return clientService.clientsOrdinaire();
+	}
 
 }

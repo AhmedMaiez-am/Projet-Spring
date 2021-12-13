@@ -34,6 +34,8 @@ public interface FactureService {
 	float getChiffreAffaireParCategorieClient(CategorieClient categorieClient,
 			Date startDate, Date endDate);
 	
+	List<Facture> rechercheParDate(String d);
+	
 	
 	List<Facture> getActiveFacture();
 

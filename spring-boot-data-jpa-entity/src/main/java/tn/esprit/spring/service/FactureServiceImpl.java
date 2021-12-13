@@ -162,4 +162,11 @@ public class FactureServiceImpl implements FactureService {
 		return (List<Facture>) factureRepository.getInactiveFacture();
 	}
 
+	@Override
+	public List<Facture> rechercheParDate(String d) {
+		// TODO Auto-generated method stub
+		List<Facture> fac = factureRepository.rechercheParDate(d);
+		return fac;
+	}
+
 }

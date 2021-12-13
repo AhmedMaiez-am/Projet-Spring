@@ -47,4 +47,7 @@ public interface FactureRepository extends CrudRepository<Facture, Long> {
 	@Query(value="SELECT * FROM Facture WHERE Facture.active = 0",nativeQuery = true)
 	List<Facture> getInactiveFacture();
 	
+	@Query(value="SELECT * FROM Facture WHERE Facture.date_facture = :date",nativeQuery = true)
+	List<Facture> rechercheParDate(@Param("date") String d);
+	
 }

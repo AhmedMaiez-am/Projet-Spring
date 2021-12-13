@@ -17,8 +17,18 @@ public interface ClientService {
 	Client updateClient(Client c);
 
 	Client retrieveClient(Long id);
+	
 	List <Client> getClientWithDate(Date d1 ,Date d2);
 	
 	List<Client> rechercheClient(String string);
 
+	List<Client> getPremium();
+	
+	List<Client> getNonPremium();
+	
+	float clientsPremium();
+	
+	float clientsFidele();
+	
+	float clientsOrdinaire();
 }

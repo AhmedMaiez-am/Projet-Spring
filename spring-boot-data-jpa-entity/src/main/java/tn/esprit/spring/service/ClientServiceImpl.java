@@ -60,6 +60,39 @@ public class ClientServiceImpl implements ClientService {
 		List<Client> rechList=clientRepository.rech(string);
 		return rechList;
 	}
+
+	@Override
+	public List<Client> getPremium() {
+		// TODO Auto-generated method stub
+		return (List<Client>) clientRepository.getPremium();
+	}
+
+	@Override
+	public List<Client> getNonPremium() {
+		// TODO Auto-generated method stub
+		return (List<Client>) clientRepository.getNonPremium();
+	}
+
+	@Override
+	public float clientsPremium() {
+		// TODO Auto-generated method stub
+		float f = clientRepository.clientsPremium();
+		return f;
+	}
+
+	@Override
+	public float clientsFidele() {
+		// TODO Auto-generated method stub
+		float f = clientRepository.clientsFidele();
+		return f;
+	}
+
+	@Override
+	public float clientsOrdinaire() {
+		// TODO Auto-generated method stub
+		float f = clientRepository.clientsOrdinaire();
+		return f;
+	}
 	
 	
 	

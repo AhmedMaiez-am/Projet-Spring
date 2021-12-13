@@ -1,10 +1,14 @@
 package tn.esprit.spring.controller;
 
+import java.io.IOException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,16 +16,17 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lowagie.text.DocumentException;
+
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import tn.esprit.spring.entity.Client;
+import tn.esprit.spring.pdf.FacturePDFexporter;
 import tn.esprit.spring.entity.Facture;
 import tn.esprit.spring.enume.CategorieClient;
 import tn.esprit.spring.service.DetailFactureService;
@@ -125,6 +130,37 @@ public class FactureRestController {
 	public List<Facture> getInactiveFac() {
 		return factureService.getInactiveFacture();
 	}
+	
+	@GetMapping("/searchByDate/{date}")
+	@ApiOperation(value = "search by date")
+	@ResponseBody
+	public List<Facture> rechercheParDate(@PathVariable ("date") String d) {
+		return factureService.rechercheParDate(d);
+	}
+	
+	@GetMapping("/searchBymontant/{montant}")
+	@ApiOperation(value = "search by date")
+	@ResponseBody
+	public List<Facture> rechercheParMontant(@PathVariable ("montant") float d) {
+		return factureService.searchFac(d);
+	}
+	
+	@GetMapping("/export/pdf")
+    public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException {
+        response.setContentType("application/pdf");
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        String currentDateTime = dateFormatter.format(new Date());
+         
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=users_" + currentDateTime + ".pdf";
+        response.setHeader(headerKey, headerValue);
+         
+        List<Facture> listUsers = factureService.retrieveAllFactures();
+         
+        FacturePDFexporter exporter = new FacturePDFexporter(listUsers);
+        exporter.export(response);
+         
+    }
 
 
 }
